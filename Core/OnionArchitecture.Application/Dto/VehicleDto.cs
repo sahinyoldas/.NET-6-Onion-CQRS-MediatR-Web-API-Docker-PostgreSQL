@@ -10,7 +10,6 @@ namespace OnionArchitecture.Application.Dto
     public record VehicleDto : IDto
     {
         public string Name { get; init; }
-        public string Brand { get; init; }
         public int Year { get; init; }
         public double Price { get; init; }
     }

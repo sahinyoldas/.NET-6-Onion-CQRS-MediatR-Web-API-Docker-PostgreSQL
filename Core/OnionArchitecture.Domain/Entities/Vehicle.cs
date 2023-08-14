@@ -10,7 +10,6 @@ namespace OnionArchitecture.Domain.Entities
     public class Vehicle : BaseEntity
     {
         public string Name { get; set; }
-        public string Brand { get; set; }
         public int Year { get; set; }
         public double Price { get; set; }
     }

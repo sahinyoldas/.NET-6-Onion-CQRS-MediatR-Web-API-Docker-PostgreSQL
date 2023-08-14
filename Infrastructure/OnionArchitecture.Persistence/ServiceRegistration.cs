@@ -14,7 +14,7 @@ namespace OnionArchitecture.Persistence
     {
         public static void AddPersistenceService(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
-            serviceCollection.AddDbContext<ApplicationContext>(options =>
+            serviceCollection.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(configuration.GetConnectionString("WebApiConnectionString"));
             });

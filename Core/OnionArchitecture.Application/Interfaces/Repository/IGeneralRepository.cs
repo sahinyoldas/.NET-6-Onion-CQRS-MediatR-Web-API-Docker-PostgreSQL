@@ -14,6 +14,6 @@ namespace OnionArchitecture.Application.Interfaces.Repository
         Task<T> Save(T item);
         Task<T> Update(T item);
         Task Delete(T item);
-        IEnumerable<Task<T>> GetList(Expression<Func<T, bool>>? filter = null);
+        Task<IEnumerable<T>> GetList(Expression<Func<T, bool>>? filter = null);
     }
 }
