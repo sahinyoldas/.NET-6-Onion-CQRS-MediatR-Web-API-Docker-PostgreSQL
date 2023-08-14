@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OnionArchitecture.Application.Interfaces.Repository;
 using OnionArchitecture.Persistence.Context;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,14 @@ namespace OnionArchitecture.Persistence
 {
     public static class ServiceRegistration
     {
-        public static void AddPersistenceService(this IServiceCollection serviceCollection, IConfiguration configuration)
+        public static void AddPersistenceService(this IServiceCollection services, IConfiguration configuration)
         {
-            serviceCollection.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(configuration.GetConnectionString("WebApiConnectionString"));
             });
+
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
         }
     }
 }

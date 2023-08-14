@@ -11,5 +11,8 @@ namespace OnionArchitecture.Application.Wrappers
         public SuccessDataResult(T dataValue, string message) : base(dataValue, true, message)
         {
         }
+        public SuccessDataResult(T dataValue) : base(dataValue, true)
+        {
+        }
     }
 }

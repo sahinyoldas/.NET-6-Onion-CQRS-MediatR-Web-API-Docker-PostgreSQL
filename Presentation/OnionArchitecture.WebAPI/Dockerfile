@@ -7,6 +7,10 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Presentation/OnionArchitecture.WebAPI/OnionArchitecture.WebAPI.csproj", "Presentation/OnionArchitecture.WebAPI/"]
+COPY ["Infrastructure/OnionArchitecture.Infrastructure/OnionArchitecture.Infrastructure.csproj", "Infrastructure/OnionArchitecture.Infrastructure/"]
+COPY ["Core/OnionArchitecture.Application/OnionArchitecture.Application.csproj", "Core/OnionArchitecture.Application/"]
+COPY ["Core/OnionArchitecture.Domain/OnionArchitecture.Domain.csproj", "Core/OnionArchitecture.Domain/"]
+COPY ["Infrastructure/OnionArchitecture.Persistence/OnionArchitecture.Persistence.csproj","Infrastructure/OnionArchitecture.Persistence/"]
 RUN dotnet restore "Presentation/OnionArchitecture.WebAPI/OnionArchitecture.WebAPI.csproj"
 COPY . .
 WORKDIR "/src/Presentation/OnionArchitecture.WebAPI"

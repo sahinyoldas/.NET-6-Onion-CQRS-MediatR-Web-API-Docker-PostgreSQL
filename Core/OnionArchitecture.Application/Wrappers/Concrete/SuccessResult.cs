@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace OnionArchitecture.Application.Wrappers
 {
-    public class ErrorDataResult<T> : DataResult<T>
+    public class SuccessResult : Result
     {
-        public ErrorDataResult(T dataValue, bool success, string message) : base(dataValue, false, message)
+        public SuccessResult(string message) : base(true, message)
         {
-            DataValue = dataValue;
+        }
+        public SuccessResult() : base(true)
+        {
         }
     }
 }

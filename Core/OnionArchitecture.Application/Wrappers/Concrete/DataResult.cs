@@ -13,7 +13,10 @@ namespace OnionArchitecture.Application.Wrappers
             DataValue = dataValue;
         }
 
+        public DataResult(T dataValue, bool success) : base(success)
+        {
+            DataValue = dataValue;
+        }
         public T DataValue { get; set; }
-
     }
 }

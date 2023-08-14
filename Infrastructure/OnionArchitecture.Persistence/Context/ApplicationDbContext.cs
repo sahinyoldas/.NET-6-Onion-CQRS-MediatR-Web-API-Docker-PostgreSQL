@@ -10,12 +10,11 @@ namespace OnionArchitecture.Persistence.Context
 {
     public sealed class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> context) : base()
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
 
         public DbSet<Vehicle> Vehicles { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +25,5 @@ namespace OnionArchitecture.Persistence.Context
                 new Vehicle { Id = 4, Name = "Bus", Price = 4000, Year = 2019 }
                 );
         }
-
     }
 }

@@ -7,13 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Wrappers\NewFolder\**" />
-    <EmbeddedResource Remove="Wrappers\NewFolder\**" />
-    <None Remove="Wrappers\NewFolder\**" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OnionArchitecture.Domain\OnionArchitecture.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Commands\Vehicle\" />
   </ItemGroup>
 
 </Project>

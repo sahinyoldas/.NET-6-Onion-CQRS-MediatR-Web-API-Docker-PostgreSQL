@@ -11,16 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Controllers\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\OnionArchitecture.Application\OnionArchitecture.Application.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\OnionArchitecture.Persistence\OnionArchitecture.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
