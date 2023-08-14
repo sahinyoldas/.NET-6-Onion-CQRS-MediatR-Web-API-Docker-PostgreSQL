@@ -11,13 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionArchitecture.Domain", "Core\OnionArchitecture.Domain\OnionArchitecture.Domain.csproj", "{46B0DFF8-7A93-42D6-9FC7-CB46E87721F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionArchitecture.Application", "Core\OnionArchitecture.Application\OnionArchitecture.Application.csproj", "{0AF5A9B1-5CD9-4DCF-913E-7FBB0AD6F6A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionArchitecture.Application", "Core\OnionArchitecture.Application\OnionArchitecture.Application.csproj", "{0AF5A9B1-5CD9-4DCF-913E-7FBB0AD6F6A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionArchitecture.Infrastructure", "Infrastructure\OnionArchitecture.Infrastructure\OnionArchitecture.Infrastructure.csproj", "{E18D2242-5D2B-40F3-8DFD-525531C39786}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionArchitecture.Infrastructure", "Infrastructure\OnionArchitecture.Infrastructure\OnionArchitecture.Infrastructure.csproj", "{E18D2242-5D2B-40F3-8DFD-525531C39786}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionArchitecture.Persistence", "Infrastructure\OnionArchitecture.Persistence\OnionArchitecture.Persistence.csproj", "{BBEC65B7-E7DC-43E8-8C0E-C6C09DC10C9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionArchitecture.Persistence", "Infrastructure\OnionArchitecture.Persistence\OnionArchitecture.Persistence.csproj", "{BBEC65B7-E7DC-43E8-8C0E-C6C09DC10C9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionArchitecture.WebAPI", "Presentation\OnionArchitecture.WebAPI\OnionArchitecture.WebAPI.csproj", "{BB7AD09A-AA76-4C0E-96FD-2CBF5643A9A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionArchitecture.WebAPI", "Presentation\OnionArchitecture.WebAPI\OnionArchitecture.WebAPI.csproj", "{BB7AD09A-AA76-4C0E-96FD-2CBF5643A9A3}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0B7487EE-E4EB-4F1D-B9D3-5A68F4F77B4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{BB7AD09A-AA76-4C0E-96FD-2CBF5643A9A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB7AD09A-AA76-4C0E-96FD-2CBF5643A9A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB7AD09A-AA76-4C0E-96FD-2CBF5643A9A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B7487EE-E4EB-4F1D-B9D3-5A68F4F77B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B7487EE-E4EB-4F1D-B9D3-5A68F4F77B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B7487EE-E4EB-4F1D-B9D3-5A68F4F77B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B7487EE-E4EB-4F1D-B9D3-5A68F4F77B4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

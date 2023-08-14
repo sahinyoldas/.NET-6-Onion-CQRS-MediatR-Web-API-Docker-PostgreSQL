@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OnionArchitecture.Persistence.Context
 {
-    public class ApplicationDbContext : DbContext
+    public sealed class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> context) : base()
         {

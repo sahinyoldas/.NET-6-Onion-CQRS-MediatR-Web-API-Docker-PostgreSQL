@@ -1,0 +1,39 @@
+version: '3.4'
+
+networks:
+  dev:
+    driver: bridge
+
+services:
+  onionarchitecture.webapi:
+    image: docker.io/library/onionarchitecturewebapi
+    depends_on:
+      - "onionarchitecture.postgredb"
+    container_name: onionarchitecture.webapi
+    ports:
+      - "8088:80"  
+    build:
+      context: .
+      dockerfile: Presentation/OnionArchitecture.WebAPI/Dockerfile
+    environment:
+      - ConnectionStrings__WebApiConnectionString=User ID=postgres;Password=postgres;Server=onionarchitecture.postgredb;Port=5432;Database=WebAPICrudDB;IntegratedSecurity=true;Pooling=true;
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - dev
+  onionarchitecture.postgredb:
+    image: postgres:latest
+    container_name: onionarchitecture.postgredb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=WebAPICrudDB
+    ports:
+      - "5433:5432"
+    restart: always
+    volumes:
+      - app_data:/var/lib/postgresql/data
+    networks:
+      - dev
+
+volumes:
+  app_data:
