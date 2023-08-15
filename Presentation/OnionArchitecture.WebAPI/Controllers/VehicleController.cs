@@ -9,16 +9,16 @@ namespace OnionArchitecture.WebAPI.Controllers
     [ApiController]
     public class VehicleController : ControllerBase
     {
-        private readonly IMediator mediator;
+        private readonly IMediator _mediator;
         public VehicleController(IMediator mediator)
         {
-            this.mediator = mediator;
+            _mediator = mediator;
         }
 
         [HttpGet("GetVehicleById/{id}")]
         public async Task<IActionResult> GetById(long id)
         {
-            var productDto = await mediator.Send(new GetVehicleByIdQueryRequest(id));
+            var productDto = await _mediator.Send(new GetVehicleByIdQueryRequest(id));
             if (productDto is null)
                 return NotFound();
             return Ok(productDto);
@@ -27,7 +27,7 @@ namespace OnionArchitecture.WebAPI.Controllers
         [HttpGet("GetAllVehicles")]
         public async Task<IActionResult> GetAllVehicles()
         {
-            var productDtoList = await mediator.Send(new GetAllVehiclesQueryRequest());
+            var productDtoList = await _mediator.Send(new GetAllVehiclesQueryRequest());
             if (productDtoList is null)
                 return NotFound();
             return Ok(productDtoList);
