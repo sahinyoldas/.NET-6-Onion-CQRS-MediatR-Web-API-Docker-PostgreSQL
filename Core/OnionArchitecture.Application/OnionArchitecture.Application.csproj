@@ -16,8 +16,4 @@
     <ProjectReference Include="..\OnionArchitecture.Domain\OnionArchitecture.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Commands\Vehicle\" />
-  </ItemGroup>
-
 </Project>

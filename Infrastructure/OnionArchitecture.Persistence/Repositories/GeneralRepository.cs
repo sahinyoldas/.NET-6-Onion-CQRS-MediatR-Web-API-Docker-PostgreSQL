@@ -28,14 +28,14 @@ namespace OnionArchitecture.Persistence.Repositories
 
         public async Task<TEntity> GetById(long itemId)
         {
-            return await dbContext.Set<TEntity>().SingleOrDefaultAsync(d => d.Id == itemId);
+            return await dbContext.Set<TEntity>().AsNoTracking().SingleOrDefaultAsync(d => d.Id == itemId);
         }
 
         public async Task<IEnumerable<TEntity>> GetList(System.Linq.Expressions.Expression<Func<TEntity, bool>>? filter = null)
         {
             return filter == null
-                      ? await dbContext.Set<TEntity>().ToListAsync()
-                      : await dbContext.Set<TEntity>().Where(filter).ToListAsync();
+                      ? await dbContext.Set<TEntity>().AsNoTracking().ToListAsync()
+                      : await dbContext.Set<TEntity>().Where(filter).AsNoTracking().ToListAsync();
         }
 
         public async Task<TEntity> Save(TEntity item)
