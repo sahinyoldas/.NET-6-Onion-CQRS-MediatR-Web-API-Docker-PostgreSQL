@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OnionArchitecture.Application.Features.Commands.Vehicles.SaveVehicle;
+using OnionArchitecture.Application.Features.Commands.Vehicles;
 using OnionArchitecture.Application.Features.Queries.Vehicles;
 
 namespace OnionArchitecture.WebAPI.Controllers
@@ -37,13 +37,28 @@ namespace OnionArchitecture.WebAPI.Controllers
         }
 
         [HttpPost("SaveVehicle")]
-        public async Task<IActionResult> Save([FromBody]SavehicleCommandRequest commandRequest)
+        public async Task<IActionResult> Save([FromBody] SaveVehicleCommandRequest commandRequest)
         {
-            _logger.LogInformation(System.Text.Json.JsonSerializer.Serialize(commandRequest).ToString());
             var addedVehicle = await _mediator.Send(commandRequest);
-            if (addedVehicle is null)
-                return NotFound();
-            return Ok(addedVehicle);
+            if (addedVehicle.Success)
+                return Ok(addedVehicle);
+
+            return BadRequest(addedVehicle);
+        }
+
+        [HttpPut("UpdateVehicle")]
+        public async Task<IActionResult> Update([FromBody] UpdateVehicleCommandRequest commandRequest)
+        {
+            var result = await _mediator.Send(commandRequest);
+            return Ok(result);
+        }
+
+
+        [HttpDelete("DeleteVehicle")]
+        public async Task<IActionResult> Delete([FromBody] DeleteVehicleCommandRequest commandRequest)
+        {
+            var result = await _mediator.Send(commandRequest);
+            return Ok(result);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using OnionArchitecture.Application.Dto;
-using OnionArchitecture.Application.Features.Commands.Vehicles.SaveVehicle;
+using OnionArchitecture.Application.Features.Commands.Vehicles;
 using OnionArchitecture.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,8 @@ namespace OnionArchitecture.Application.Mapping
         public GeneralMappings()
         {
             CreateMap<Vehicle, VehicleDto>().ReverseMap();
-            CreateMap<SavehicleCommandRequest, Vehicle>().ReverseMap();
+            CreateMap<SaveVehicleCommandRequest, Vehicle>().ReverseMap();
+            CreateMap<UpdateVehicleCommandRequest, Vehicle>().ReverseMap();
         }
     }
 }

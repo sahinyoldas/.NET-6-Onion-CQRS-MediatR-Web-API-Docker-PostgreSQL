@@ -11,9 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionArchitecture.Application.Features.Commands.Vehicles.SaveVehicle
+namespace OnionArchitecture.Application.Features.Commands.Vehicles
 {
-    public class SaveVehicleCommandHandler : IRequestHandler<SavehicleCommandRequest, DataResult<Vehicle>>
+    public class SaveVehicleCommandHandler : IRequestHandler<SaveVehicleCommandRequest, DataResult<Vehicle>>
     {
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IMapper _mapper;
@@ -24,8 +24,8 @@ namespace OnionArchitecture.Application.Features.Commands.Vehicles.SaveVehicle
             _vehicleRepository = vehicleRepository;
         }
 
-        public async Task<DataResult<Vehicle>> Handle(SavehicleCommandRequest request, CancellationToken cancellationToken)
-        {
+        public async Task<DataResult<Vehicle>> Handle(SaveVehicleCommandRequest request, CancellationToken cancellationToken)
+        {       
             var addedVehicle = await _vehicleRepository.Save(_mapper.Map<Vehicle>(request));
             return new SuccessDataResult<Vehicle>(addedVehicle);
         }
