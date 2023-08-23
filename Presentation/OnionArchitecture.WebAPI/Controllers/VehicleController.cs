@@ -22,18 +22,19 @@ namespace OnionArchitecture.WebAPI.Controllers
         public async Task<IActionResult> GetById(long id)
         {
             var productDto = await _mediator.Send(new GetVehicleByIdQueryRequest(id));
-            if (productDto is null)
-                return NotFound();
-            return Ok(productDto);
+            if (productDto.Success)
+                return Ok(productDto);
+            return NotFound(productDto);
         }
 
         [HttpGet("GetAllVehicles")]
         public async Task<IActionResult> GetAllVehicles()
         {
             var productDtoList = await _mediator.Send(new GetAllVehiclesQueryRequest());
-            if (productDtoList is null)
-                return NotFound();
-            return Ok(productDtoList);
+            if (productDtoList.Success)
+                return Ok(productDtoList);
+
+            return NotFound(productDtoList);
         }
 
         [HttpPost("SaveVehicle")]
@@ -50,15 +51,20 @@ namespace OnionArchitecture.WebAPI.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateVehicleCommandRequest commandRequest)
         {
             var result = await _mediator.Send(commandRequest);
-            return Ok(result);
-        }
+            if (result.Success)
+                return Ok(result);
 
+            return BadRequest(result);
+        }
 
         [HttpDelete("DeleteVehicle")]
         public async Task<IActionResult> Delete([FromBody] DeleteVehicleCommandRequest commandRequest)
         {
             var result = await _mediator.Send(commandRequest);
-            return Ok(result);
+            if (result.Success)
+                return Ok(result);
+
+            return BadRequest(result);
         }
     }
 }

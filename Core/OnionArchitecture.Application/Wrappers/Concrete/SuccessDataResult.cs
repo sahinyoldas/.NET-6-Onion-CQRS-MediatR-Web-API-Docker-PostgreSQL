@@ -15,4 +15,11 @@ namespace OnionArchitecture.Application.Wrappers
         {
         }
     }
+
+    public class EmptyDataResult<T> : DataResult<T>
+    {
+        public EmptyDataResult() : base(default, false, Constants.ConstantMessages.NoDataFound)
+        {
+        }
+    }
 }

@@ -8,7 +8,7 @@ namespace OnionArchitecture.Application.Wrappers
 {
     public class ErrorDataResult<T> : DataResult<T>
     {
-        public ErrorDataResult(T dataValue, bool success, string message) : base(dataValue, false, message)
+        public ErrorDataResult(T dataValue, string message) : base(dataValue, false, message)
         {
             DataValue = dataValue;
         }

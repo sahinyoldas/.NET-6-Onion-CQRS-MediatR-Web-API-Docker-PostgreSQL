@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace OnionArchitecture.Application.Wrappers
 {
-    public class Result : IBaseResult
+    public abstract class Result : IBaseResult
     {
-        public Result(bool success, string message)
+        public Result(bool success, string message) : this(success)
         {
-            Success = success;
             Message = message;
         }
 

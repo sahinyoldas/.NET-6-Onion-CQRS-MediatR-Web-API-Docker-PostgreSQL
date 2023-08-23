@@ -24,8 +24,10 @@ namespace OnionArchitecture.Application.Features.Queries.Vehicles
         public async Task<DataResult<IEnumerable<VehicleDto>>> Handle(GetAllVehiclesQueryRequest request, CancellationToken cancellationToken)
         {
             var vehicleList = await _vehicleRepository.GetList();
-            var viewModel = _mapper.Map<List<VehicleDto>>(vehicleList);
-            return new SuccessDataResult<IEnumerable<VehicleDto>>(viewModel);
+            if (vehicleList.IsAny())
+                return new SuccessDataResult<IEnumerable<VehicleDto>>(_mapper.Map<List<VehicleDto>>(vehicleList));
+            else
+                return new EmptyDataResult<IEnumerable<VehicleDto>>();
         }
     }
 }

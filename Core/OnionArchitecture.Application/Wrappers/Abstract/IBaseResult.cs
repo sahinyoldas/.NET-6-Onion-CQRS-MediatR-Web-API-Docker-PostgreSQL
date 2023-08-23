@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace OnionArchitecture.Application.Wrappers
 {
-    internal interface IBaseResult
+    public interface IBaseResult
     {
         public bool Success { get; set; }
         public string Message { get; set; }
+
     }
 }

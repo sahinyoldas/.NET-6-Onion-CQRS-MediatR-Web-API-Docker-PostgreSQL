@@ -24,8 +24,10 @@ namespace OnionArchitecture.Application.Features.Queries.Vehicles
         public async Task<DataResult<VehicleDto>> Handle(GetVehicleByIdQueryRequest request, CancellationToken cancellationToken)
         {
             var vehicleItem = await _vehicleRepository.GetById(request.Id);
-            var mappedProductObj = _mapper.Map<VehicleDto>(vehicleItem);
-            return new SuccessDataResult<VehicleDto>(mappedProductObj);
+            if (vehicleItem is null)
+                return new EmptyDataResult<VehicleDto>();
+            else
+                return new SuccessDataResult<VehicleDto>(_mapper.Map<VehicleDto>(vehicleItem));
         }
     }
 }
