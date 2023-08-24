@@ -5,10 +5,7 @@ using OnionArchitecture.Persistence.Repositories;
 
 namespace OnionArchitecture.Persistence
 {
-    public class VehicleRepository : GeneralRepository<Vehicle>, IVehicleRepository
+    public class VehicleRepository : GeneralRepository<Vehicle, ApplicationDbContext>, IVehicleRepository
     {
-        public VehicleRepository(ApplicationDbContext dbContext) : base(dbContext)
-        {
-        }
     }
 }

@@ -12,17 +12,17 @@ namespace OnionArchitecture.Persistence.Context
 {
     public class ApplicationDbContext : DbContext
     {
+        public DbSet<Vehicle> Vehicles { get; set; }
+
         public ApplicationDbContext() { }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-        public DbSet<Vehicle> Vehicles { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("User ID=postgres;Password=postgres;Server=localhost;Port=5433;Database=WebAPICrudDB;IntegratedSecurity=true;Pooling=true;");
+                optionsBuilder.UseNpgsql("User ID=postgres;Password=postgres;Server=onionarchitecture.postgredb;Port=5432;Database=WebAPICrudDB;IntegratedSecurity=true;Pooling=true;");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

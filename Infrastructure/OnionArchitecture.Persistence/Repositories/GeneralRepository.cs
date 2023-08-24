@@ -10,17 +10,14 @@ using System.Threading.Tasks;
 
 namespace OnionArchitecture.Persistence.Repositories
 {
-    public class GeneralRepository<TEntity> : IGeneralRepository<TEntity> where TEntity : BaseEntity
+    public class GeneralRepository<TEntity, TContext> : IGeneralRepository<TEntity>
+        where TEntity : BaseEntity
+        where TContext : DbContext, new()
     {
-        private readonly ApplicationDbContext dbContext;
-
-        public GeneralRepository(ApplicationDbContext dbContext)
-        {
-            this.dbContext = dbContext;
-        }
 
         public async Task Delete(TEntity item)
         {
+            await using TContext dbContext = new TContext();
             var deletedEntity = dbContext.Entry(item);
             deletedEntity.State = EntityState.Deleted;
             await dbContext.SaveChangesAsync();
@@ -28,11 +25,13 @@ namespace OnionArchitecture.Persistence.Repositories
 
         public async Task<TEntity> GetById(long itemId)
         {
+            await using TContext dbContext = new TContext();
             return await dbContext.Set<TEntity>().AsNoTracking().SingleOrDefaultAsync(d => d.Id == itemId);
         }
 
         public async Task<IEnumerable<TEntity>> GetList(System.Linq.Expressions.Expression<Func<TEntity, bool>>? filter = null)
         {
+            await using TContext dbContext = new TContext();
             return filter == null
                       ? await dbContext.Set<TEntity>().AsNoTracking().ToListAsync()
                       : await dbContext.Set<TEntity>().Where(filter).AsNoTracking().ToListAsync();
@@ -40,6 +39,7 @@ namespace OnionArchitecture.Persistence.Repositories
 
         public async Task<TEntity> Save(TEntity item)
         {
+            await using TContext dbContext = new TContext();
             var addedEntity = dbContext.Entry(item);
             addedEntity.State = EntityState.Added;
             await dbContext.SaveChangesAsync();
@@ -48,6 +48,7 @@ namespace OnionArchitecture.Persistence.Repositories
 
         public async Task<TEntity> Update(TEntity item)
         {
+            await using TContext dbContext = new TContext();
             var updatedEntity = dbContext.Entry(item);
             updatedEntity.State = EntityState.Modified;
             await dbContext.SaveChangesAsync();
