@@ -27,7 +27,7 @@ namespace OnionArchitecture.Application.Features.Commands.Vehicles
             var vehicleWillBeUpdated = await _vehicleRepository.GetById(request.Id);
             if (vehicleWillBeUpdated is null)
             {
-                return new SuccessResult(Constants.ConstantMessages.VehicleNotFound);
+                return new ErrorResult(Constants.ConstantMessages.VehicleNotFound);
             }
             vehicleWillBeUpdated.Name = request.Name;
             vehicleWillBeUpdated.Year = request.Year;
