@@ -1,5 +1,6 @@
 using OnionArchitecture.Application;
 using OnionArchitecture.Persistence;
+using OnionArchitecture.WebAPI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceService(builder.Configuration);
+builder.Services.AddFluentApiService();
 
 
 var app = builder.Build();

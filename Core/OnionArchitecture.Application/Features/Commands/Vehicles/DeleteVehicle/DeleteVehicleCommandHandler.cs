@@ -24,10 +24,11 @@ namespace OnionArchitecture.Application.Features.Commands.Vehicles
             var vehicleWillBeDeleted = await _vehicleRepository.GetById(request.Id);
             if (vehicleWillBeDeleted is null)
             {
-                return new SuccessResult(Constants.ConstantMessages.VehicleNotFound);
+                return new ErrorResult(Constants.ConstantMessages.VehicleNotFound);
             }
             await _vehicleRepository.Delete(vehicleWillBeDeleted);
             return new SuccessResult(Constants.ConstantMessages.VehicleDeleted);
         }
     }
 }
+s
